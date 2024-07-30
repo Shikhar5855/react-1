@@ -2,26 +2,30 @@ import React, { useState } from 'react'
 
 export default function Navbar(Props) {
 
- const [MyStyle,setMyStyle] = useState({
-    color: 'white',
-    backgroundColor: 'black', 
+  const [MyStyle, setMyStyle] = useState({
+    color: 'black',
+    backgroundColor: 'white',
   })
-
-  const mode = ()=> {
+  const [btntext, setbtntext] = useState("Enable dark mode ")
+  const mode = () => {
     console.log("mode")
-   if (MyStyle.color == 'white') {
-    setMyStyle({
-      color: 'black',
-      backgroundColor: 'white', 
-    })    
-   }
-   else( 
-    setMyStyle({
-      color: 'white',
-      backgroundColor: 'black', 
-    })    
-   )
+    if (MyStyle.color == 'black') {
+      setMyStyle({
+        color: 'white',
+        backgroundColor: 'black',
+      })
+      setbtntext("Enable light mode")
     }
+    else (
+      setMyStyle({
+        color: 'black',
+        backgroundColor: 'white',
+      })
+    )
+    {
+      setbtntext("Enable dark mode")
+    }
+  }
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light" style={MyStyle}>
@@ -43,15 +47,15 @@ export default function Navbar(Props) {
                   Dropdown
                 </a>
                 <ul className="dropdown-menu" style={MyStyle}>
-                  <li><a className="dropdown-item"style={MyStyle} href="#">Action</a></li>
-                  <li><a className="dropdown-item" href="#"style={MyStyle}>Another action</a></li>
-                  <li><hr className="dropdown-divider" style={MyStyle}/></li>
-                  <li><a className="dropdown-item" href="#"style={MyStyle}>Something else here</a></li>
+                  <li><a className="dropdown-item" style={MyStyle} href="#">Action</a></li>
+                  <li><a className="dropdown-item" href="#" style={MyStyle}>Another action</a></li>
+                  <li><hr className="dropdown-divider" style={MyStyle} /></li>
+                  <li><a className="dropdown-item" href="#" style={MyStyle}>Something else here</a></li>
                 </ul>
               </li>
             </ul>
             <form className="d-flex" role="search">
-              <button className="btn btn-outline-primary" onClick={mode} style={MyStyle}> Enable light mode </button>
+              <button type="button" className="btn btn-light" onClick={mode} style={MyStyle}>{btntext}</button>
             </form>
           </div>
         </div>
